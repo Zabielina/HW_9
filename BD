@@ -1,0 +1,66 @@
+1.   SELECT * FROM departments ORDER BY id DESC; 
+
+
+2. SELECT name AS  "Group Name", rating AS "Group Rating" FROM groups;
+
+
+3. SELECT surname ,(premium /salary * 100) AS "Відсоток ставки до надбавки" ,
+ ((premium +  salary  ) /salary * 100) AS "Відсоток ставки до зарплати" FROM teachers;
+
+
+4. SELECT 'The dean of faculty' || name || 'is' || dean|| '.' AS "Faculty info"FROM faculties;
+
+
+5. SELECT surname FROM teachers
+   WHERE isprofessor = 1
+   AND CAST(salary AS numeric) > 1050;
+
+
+6. SELECT name FROM departments
+   WHERE CAST(financing AS numeric) < 11000
+   OR CAST(financing AS numeric) > 25000;
+
+7.SELECT name  FROM faculties  WHERE name ILIKE 'Computer Science';
+
+8.  SELECT surname FROM teachers WHERE isprofessor = 0;
+
+9. SELECT surname,
+       CASE
+           WHEN isassistant = 1 THEN 'Assistant'
+           ELSE 'Other Position'
+       END AS position,
+       (salary::numeric) AS salary,
+       (premium::numeric) AS premium
+       FROM teachers
+       WHERE isassistant = 1
+    AND (premium::numeric) BETWEEN 160 AND 550;
+
+
+10. SELECT surname, salary FROM teachers  WHERE isassistant = 1;
+
+11. SELECT surname, 
+       CASE 
+           WHEN isassistant = 1 THEN 'Assistant'
+           WHEN isprofessor = 1 THEN 'Professor'
+           ELSE 'Other Position'
+       END AS position
+ FROM teachers
+ WHERE employmentdate < '2000-01-01';
+
+12. SELECT name AS "Name"  FROM faculties
+    WHERE name < 'Software Development'
+    ORDER BY name;
+
+
+13. SELECT surname FROM teachers
+    WHERE isassistant = 1
+    AND (CAST(salary AS numeric) + CAST(premium AS numeric)) <= 1200;
+
+
+
+14. SELECT name FROM groups  WHERE year = 5
+    AND rating BETWEEN 2 AND 4;
+
+15. SELECT surname FROM teachers
+    WHERE isassistant = 1
+    AND (CAST(salary AS numeric) < 550 OR CAST(premium AS numeric) < 200);
